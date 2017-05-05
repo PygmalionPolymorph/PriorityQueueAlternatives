@@ -1,0 +1,1505 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/reveal.css" type="text/css" media="screen" charset="utf-8">
+	<link rel="stylesheet" href="css/theme/serif.css" type="text/css"
+	 media="screen" charset="utf-8">
+	<link rel="stylesheet" href="css/override.css" type="text/css" media="screen" charset="utf-8">
+	<title>Alternativen zu Priority Queues</title>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				
+			</section>
+			<section>
+				<h2>Alternativen zu Priority Queues</h1>
+				<h5>zur Reduktion des Pending Event Set Problems</h2>
+				<footer>
+				</footer>
+			</section>
+			<section>
+				<h2 style="text-align: center;">Agenda</h2>
+				<ol style="text-align: center;" class="agenda">
+					<li>DES &amp; PES</li>
+					<li>Min-Heap</li>
+					<li>Parallel Heap</li>
+					<li>Calendar Queue</li>
+					<li>Mlist</li>
+					<li>Vergleich / Fazit</li>
+				</ol>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Trockenes Thema</li>
+						<li>Interaktiv gestalten</li>
+						<li>Gleich fragen</li>
+					</ul>
+				</aside>
+			</section>
+			<section>
+				<h3>Diskrete Eventbasierte Simulation</h3>
+				<h4></h4>
+				<ol class="floatleft">
+					<li class="fragment">Simulationssystem mit „Timeline“</li>
+					<li class="fragment">Ausstehende Events im <i>Pending Event Set</i></li>
+					<li class="fragment">PQ-Operationen großteil der Laufzeit</li>
+				</ol>
+				<h3 class="push-bottom fragment floatleft">➡ Pending Event Set Problem</h3>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Diskrete Zeitschritte, nicht kontinuierlich (Reelle Zahlen)</li>
+						<li>Eventbasiert: Nicht Ticks, sondern bestimmte Zeitpunkte</li>
+						<li>Frage: Welche betrachtete Datenstruktur ist beste, zur Optimierung?</li>
+					</ul>
+				</aside>
+			</section>
+
+
+
+			<section>
+				<h3>Vorgehen</h3>
+				<h4></h4>
+				<table>
+					<tr>
+						<th></th>
+						<th>Min-Heap</th>
+						<th>Parallel Heap</th>
+						<th>Calendar Queue</th>
+						<th>MList</th>
+					</tr>
+					<tr>
+						<td>Theoretisch Enqueue</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Theoretisch Dequeue</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Amortisiert Enqueue</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Amortisiert Dequeue</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+			</section>
+
+			<section>
+				<h3>Heap</h3>
+				<h4></h4>
+				<ol class="floatleft">
+					<li class="fragment">Binärer Baum mit Einschränkungen</li>
+					<li class="fragment">Wird von links nach rechts befüllt</li>
+					<li class="fragment">Min- / Max-Heap</li>
+				</ol>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Wdh. AlgoDat</li>
+						<li>Fragen!</li>
+					</ul>
+				</aside>
+			</section>
+
+
+
+			<section>
+				<h3>Priority Queue mit Min-Heap</h3>
+				<h4>Enqueue</h4>
+				<ul class="heap">
+					<li class="root">
+						<span class="invisible state-4 elem elem7">1</span>
+						<span class="invisible state-1 state-4-out elem elem1">3</span>
+					</li>
+					<li class="level1 slot1">
+						<span class="invisible state-1 elem elem2">4</span>
+					</li>
+					<li class="level1 slot2">
+						<span class="invisible state-1 state-3-out elem elem3">6</span>
+						<span class="invisible state-3 state-4-out elem elem7">1</span>
+						<span class="invisible state-4 elem elem1">3</span>
+					</li>
+					<li class="level2 slot1">
+						<span class="invisible state-1 elem elem4">5</span>
+					</li>
+					<li class="level2 slot2">
+						<span class="invisible state-1 elem elem5">8</span>
+					</li>
+					<li class="level2 slot3">
+						<span class="invisible state-1 elem elem6">9</span>
+					</li>
+					<li class="level2 slot4">
+						<span class="invisible state-2 state-3-out elem elem7">1</span>
+						<span class="invisible state-3 elem elem3">6</span>
+					</li>
+				</ul>
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<div class="trigger fragment" data-state="3"></div>
+				<div class="trigger fragment" data-state="4"></div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+
+			</section>
+
+
+			<section>
+				<h3>Priority Queue mit Min-Heap</h3>
+				<h4>Dequeue</h4>
+				<ul class="heap">
+					<li class="root">
+						<span class="state-1-out elem elem7">1</span>
+						<span class="invisible state-1 state-2-out elem elem3">6</span>
+						<span class="invisible state-2 elem elem1">3</span>
+					</li>
+					<li class="level1 slot1">
+						<span class="elem elem2">4</span>
+					</li>
+					<li class="level1 slot2">
+						<span class="state-2-out elem elem1">3</span>
+						<span class="invisible state-2 elem elem3">6</span>
+					</li>
+					<li class="level2 slot1">
+						<span class="elem elem4">5</span>
+					</li>
+					<li class="level2 slot2">
+						<span class="elem elem5">8</span>
+					</li>
+					<li class="level2 slot3">
+						<span class="elem elem6">9</span>
+					</li>
+					<li class="level2 slot4">
+						<span class="state-1-out elem elem3">6</span>
+					</li>
+				</ul>
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+			</section>
+
+
+
+			<section>
+				<h3>Priority Queue mit Min-Heap</h3>
+				<h4>Komplexität</h4>
+				<table>
+					<tr>
+						<th></th>
+						<th>Min-Heap</th>
+						<th>Parallel Heap</th>
+						<th>Calendar Queue</th>
+						<th>MList</th>
+					</tr>
+					<tr>
+						<td>Theoretisch Enqueue</td>
+						<td class="invisible state-1">$O(log n)$</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Theoretisch Dequeue</td>
+						<td class="invisible state-1">$ϴ(log n)$</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Amortisiert Enqueue</td>
+						<td class="invisible state-1">$O(log n)$</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Amortisiert Dequeue</td>
+						<td class="invisible state-1">$ϴ(log n)$</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="invisible state-1">initial $O(n)$</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Kann sich jemand erinnern?</li>
+					</ul>
+				</aside>
+				<div class="trigger fragment" data-state="1"></div>
+			</section>
+
+			<section>
+				<h3>Parallel Heap</h3>
+				<h4></h4>
+				<ol class="floatleft">
+					<li class="fragment">Strukturell wie normaler Heap</li>
+					<li class="fragment">Knoten sind Arrays mit jeweils $r$ Elementen</li>
+					<li class="fragment">Verarbeitung mehrerer Elemente</li>
+				</ol>
+				<footer>
+					<span></span><span></span>
+				</footer>
+			</section>
+
+			<section>
+				<h3>Parallel Heap</h3>
+				<h4>Enqueue</h4>
+				<div class="stage">
+					<span class="state-2 invisible state-3-out elem elem1">1</span>
+					<span class="state-2 invisible state-3-out elem elem2">3</span>
+					<span class="state-2 invisible state-3-out elem elem3">4</span>
+					<span class="invisible state-1 state-5-out elem elem5">8</span>
+					<span class="invisible state-4 state-5-out elem elem2">8</span>
+					<span class="invisible state-4 state-5-out elem elem6">9</span>
+					<span class="invisible state-4 state-6-out elem elem7">9</span>
+					<span class="invisible state-1 state-6-out elem elem8">14</span>
+					<span class="invisible state-1 state-6-out elem elem9">15</span>
+				</div>
+				<ul class="heap parallel-heap">
+					<li class="root">
+						<ul class="ph-array">
+							<li>
+								<span class="state-2-out state-3 elem elem1">1</span>
+							</li>
+							<li>
+								<span class="state-2-out state-3 elem elem2">3</span>
+							</li>
+							<li>
+								<span class="state-2-out state-3 elem elem3">4</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level1 slot1">
+						<ul class="ph-array">
+							<li>
+								<span class="elem elem10">4</span>
+							</li>
+							<li>
+								<span class="elem elem11">5</span>
+							</li>
+							<li>
+								<span class="elem elem12">6</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level1 slot2">
+						<ul class="ph-array">
+							<li>
+								<span class="state-4-out state-5 elem elem2">8</span>
+							</li>
+							<li>
+								<span class="invisible state-5 elem elem5">8</span>
+								<span class="state-4-out elem elem6">9</span>
+							</li>
+							<li>
+								<span class="invisible state-5 elem elem6">9</span>
+								<span class="state-4-out elem elem7">9</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level2 slot1">
+						<ul class="ph-array">
+							<li>
+								<span class="elem elem14">7</span>
+							</li>
+							<li>
+								<span class="elem elem15">8</span>
+							</li>
+							<li>
+								<span class="elem elem16">8</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level2 slot2">
+						<ul class="ph-array">
+							<li>
+								<span class="elem elem1">9</span>
+							</li>
+							<li>
+								<span class="elem elem2">9</span>
+							</li>
+							<li>
+								<span class="elem elem3">9</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level2 slot3">
+						<ul class="ph-array">
+							<li>
+								<span class="elem elem7">9</span>
+							</li>
+							<li>
+								<span class="elem elem8">10</span>
+							</li>
+							<li>
+								<span class="elem elem9">12</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level2 slot4">
+						<ul class="ph-array">
+							<li>
+								<span class="invisible state-6 elem elem7">9</span>
+							</li>
+							<li>
+								<span class="invisible state-6 elem elem8">14</span>
+							</li>
+							<li>
+								<span class="invisible state-6 elem elem9">15</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<div class="trigger fragment" data-state="3"></div>
+				<div class="trigger fragment" data-state="4"></div>
+				<div class="trigger fragment" data-state="5"></div>
+				<div class="trigger fragment" data-state="6"></div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Zielknoten</li>	
+						<li>r kleinste => aktueller Knoten</li>
+					</ul>
+				</aside>
+
+			</section>
+
+
+
+			<section>
+				<h3>Parallel Heap</h3>
+				<h4>Dequeue</h4>
+				<div class="invisible state-2 variables">
+					$x = 6$<br />
+					$y = 9$
+				</div>
+				<div class="stage">
+					<span class="invisible state-2 state-3-out elem elem7">4</span>
+					<span class="invisible state-2 state-3-out elem elem1">5</span>
+					<span class="invisible state-2 state-3-out elem elem2">6</span>
+					<span class="invisible state-2 state-4-out elem elem7">8</span>
+					<span class="invisible state-2 state-4-out elem elem7">8</span>
+					<span class="invisible state-2 state-4-out elem elem1">9</span>
+					<span class="invisible state-2 state-5-out elem elem3">9</span>
+					<span class="invisible state-2 state-5-out elem elem2">14</span>
+					<span class="invisible state-2 state-5-out elem elem1">15</span>
+				</div>
+				<ul class="heap parallel-heap">
+					<li class="root">
+						<ul class="ph-array">
+							<li>
+								<span class="state-1-out elem elem1">1</span>
+								<span class="invisible state-1 state-2-out elem elem3">9</span>
+								<span class="invisible state-3 elem elem7">4</span>
+							</li>
+							<li>
+								<span class="state-1-out elem elem2">3</span>
+								<span class="invisible state-1 state-2-out elem elem2">14</span>
+								<span class="invisible state-3 elem elem1">5</span>
+							</li>
+							<li>
+								<span class="state-1-out elem elem3">4</span>
+								<span class="invisible state-1 state-2-out elem elem1">15</span>
+								<span class="invisible state-3 elem elem2">6</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level1 slot1">
+						<ul class="ph-array">
+							<li>
+								<span class="state-2-out elem elem7">4</span>
+								<span class="invisible state-5 elem elem3">9</span>
+							</li>
+							<li>
+								<span class="state-2-out elem elem1">5</span>
+								<span class="invisible state-5 elem elem2">14</span>
+							</li>
+							<li>
+								<span class="state-2-out elem elem2">6</span>
+								<span class="invisible state-5 elem elem1">15</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level1 slot2">
+						<ul class="ph-array">
+							<li>
+								<span class="state-2-out state-4 elem elem7">8</span>
+							</li>
+							<li>
+								<span class="state-2-out state-4 elem elem7">8</span>
+							</li>
+							<li>
+								<span class="state-2-out state-4 elem elem1">9</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level2 slot1">
+						<ul class="ph-array">
+							<li>
+								<span class="elem elem8">7</span>
+							</li>
+							<li>
+								<span class="elem elem9">8</span>
+							</li>
+							<li>
+								<span class="elem elem10">8</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level2 slot2">
+						<ul class="ph-array">
+							<li>
+								<span class="elem elem11">9</span>
+							</li>
+							<li>
+								<span class="elem elem12">9</span>
+							</li>
+							<li>
+								<span class="elem elem13">9</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level2 slot3">
+						<ul class="ph-array">
+							<li>
+								<span class="elem elem14">9</span>
+							</li>
+							<li>
+								<span class="elem elem15">10</span>
+							</li>
+							<li>
+								<span class="elem elem16">12</span>
+							</li>
+						</ul>
+					</li>
+					<li class="level2 slot4">
+						<ul class="ph-array">
+							<li>
+								<span class="state-1-out elem elem3">9</span>
+							</li>
+							<li>
+								<span class="state-1-out elem elem2">14</span>
+							</li>
+							<li>
+								<span class="state-1-out elem elem1">15</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<div class="trigger fragment" data-state="3"></div>
+				<div class="trigger fragment" data-state="4"></div>
+				<div class="trigger fragment" data-state="5"></div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>root löschen und auffüllen</li>
+						<li>merge aktuell und Kinder</li>
+						<li>x &amp; y merken</li>
+						<li>x < y rechts,  x >= y links</li>
+						<li>rechter Teilbaum fertig, links wdh.</li>
+					</ul>
+				</aside>
+
+			</section>
+
+			<section>
+				<h3>Parallel Heap</h3>
+				<h4>Komplexität</h4>
+				<table>
+					<tr>
+						<th></th>
+						<th>Min-Heap</th>
+						<th>Parallel Heap</th>
+						<th>Calendar Queue</th>
+						<th>MList</th>
+					</tr>
+					<tr>
+						<td>Theoretisch Enqueue</td>
+						<td>$O(log n)$</td>
+						<td class="invisible state-1">$O(log n)$</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Theoretisch Dequeue</td>
+						<td>$ϴ(log n)$</td>
+						<td class="invisible state-1">$ϴ(log n)$</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Amortisiert Enqueue</td>
+						<td>$O(log n)$</td>
+						<td class="invisible state-1">$O(log n)$</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Amortisiert Dequeue</td>
+						<td>$ϴ(log n)$</td>
+						<td class="invisible state-1">$ϴ(log n)$</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>initial $O(n)$</td>
+						<td class="invisible state-1">nebenläufig</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Nicht fragen, labern!</li>
+					</ul>
+				</aside>
+
+				<div class="trigger fragment" data-state="1"></div>
+			</section>
+
+			<section>
+				<h3>Calendar Queue</h3>
+				<h4></h4>
+				<ol class="floatleft">
+					<li class="fragment">1988 von Randy Brown entwickelt</li>
+					<li class="fragment">Berühmt im Simulationsumfeld, vielfach erweitert</li>
+					<li class="fragment">Ähnelt von der Struktur einem Kalender</li>
+					<li class="fragment">Tage (Buckets)</li>
+					<li class="fragment">Anzahl Tage = 1 Jahr</li>
+				</ol>
+				<footer>
+					<span></span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Buckets: Verkettete Listen (kann verschieden implementiert werden)</li>
+					</ul>
+				</aside>
+			</section>
+
+			<section>
+				<h3>Calendar Queue</h3>
+				<h4>Enqueue</h4>
+				<div class="stage">
+						<span class="invisible state-2 state-3-out elem elem1">7</span>
+						<span class="invisible state-4 state-5-out elem elem7">62</span>
+						<span class="invisible state-6 state-7-out elem elem3">27</span>
+						<span class="invisible state-9 state-11-out elem elem3">108</span>
+						<span class="invisible state-12 state-13-out elem elem3">152</span>
+				</div>
+				<ul class="list fragment">
+					<li class="slot slot-1">
+						<span class="invisible state-3 elem elem1">7</span>
+						<span class="note invisible state-1">0 - 10</span>
+						<span class="note note-small invisible state-10">80 - 90</span>
+					</li>
+					<li class="slot slot-2">
+						<span class="note invisible state-1">10 - 20</span>
+						<span class="note note-small invisible state-10">90 - 100</span>
+					</li>
+					<li class="slot slot-3">
+						<span class="invisible state-8 elem elem8">23</span>
+						<span class="invisible state-7 elem elem3">27</span>
+						<span class="invisible state-11 elem elem3">108</span>
+						<span class="note invisible state-1">20 - 30</span>
+						<span class="note note-small invisible state-10">100 - 110</span>
+					</li>
+					<li class="slot slot-4">
+						<span class="note invisible state-1">30 - 40</span>
+						<span class="note note-small invisible state-10">110 - 120</span>
+					</li>
+					<li class="slot slot-5">
+						<span class="invisible state-8 elem elem5">40</span>
+						<span class="note invisible state-1">40 - 50</span>
+						<span class="note note-small invisible state-10">120 - 130</span>
+					</li>
+					<li class="slot slot-6">
+						<span class="invisible state-8 elem elem6">55</span>
+						<span class="note invisible state-1">50 - 60</span>
+						<span class="note note-small invisible state-10">130 - 140</span>
+					</li>
+					<li class="slot slot-7">
+						<span class="invisible state-5 elem elem7">62</span>
+						<span class="note invisible state-1">60 - 70</span>
+						<span class="note note-small invisible state-10">140 - 150</span>
+					</li>
+					<li class="slot slot-8">
+						<span class="invisible state-13 elem elem3">152</span>
+						<span class="note invisible state-1">70 - 80</span>
+						<span class="note note-small invisible state-10">150 - 160</span>
+					</li>
+				</ul>
+
+				<div class="stage-bottom invisible state-14">
+					$ bucket\_idx=\lfloor\frac{t(e)}{bw}\rfloor mod M $
+				</div>
+
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<div class="trigger fragment" data-state="3"></div>
+				<div class="trigger fragment" data-state="4"></div>
+				<div class="trigger fragment" data-state="5"></div>
+				<div class="trigger fragment" data-state="6"></div>
+				<div class="trigger fragment" data-state="7"></div>
+				<div class="trigger fragment" data-state="8"></div>
+				<div class="trigger fragment" data-state="9"></div>
+				<div class="trigger fragment" data-state="10"></div>
+				<div class="trigger fragment" data-state="11"></div>
+				<div class="trigger fragment" data-state="12"></div>
+				<div class="trigger fragment" data-state="13"></div>
+				<div class="trigger fragment" data-state="14"></div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+			</section>
+
+
+
+
+
+			<section>
+				<h3>Calendar Queue</h3>
+				<h4>Dequeue</h4>
+				<div class="stage">
+				</div>
+				<ul class="list fragment">
+					<li class="slot slot-1">
+						<span class="state-1-out elem elem1">7</span>
+						<span class="note">0 - 10</span>
+						<span class="note note-small">80 - 90</span>
+					</li>
+					<li class="slot slot-2">
+						<span class="note">10 - 20</span>
+						<span class="note note-small">90 - 100</span>
+					</li>
+					<li class="slot slot-3">
+						<span class="state-2-out elem elem8">23</span>
+						<span class="state-3-out elem elem3">27</span>
+						<span class="state-4-out state-5 elem elem3">108</span>
+						<span class="note">20 - 30</span>
+						<span class="note note-small">100 - 110</span>
+					</li>
+					<li class="slot slot-4">
+						<span class="note">30 - 40</span>
+						<span class="note note-small">110 - 120</span>
+					</li>
+					<li class="slot slot-5">
+						<span class="state-6-out elem elem5">40</span>
+						<span class="note">40 - 50</span>
+						<span class="note note-small">120 - 130</span>
+					</li>
+					<li class="slot slot-6">
+						<span class="elem elem6">55</span>
+						<span class="note">50 - 60</span>
+						<span class="note note-small">130 - 140</span>
+					</li>
+					<li class="slot slot-7">
+						<span class="elem elem7">62</span>
+						<span class="note">60 - 70</span>
+						<span class="note note-small">140 - 150</span>
+					</li>
+					<li class="slot slot-8">
+						<span class="elem elem3">152</span>
+						<span class="note">70 - 80</span>
+						<span class="note note-small">150 - 160</span>
+					</li>
+				</ul>
+
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<div class="trigger fragment" data-state="3"></div>
+				<div class="trigger fragment" data-state="4"></div>
+				<div class="trigger fragment" data-state="5"></div>
+				<div class="trigger fragment" data-state="6"></div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+			</section>
+
+
+
+
+
+			<section>
+				<h3>Calendar Queue</h3>
+				<h4>Resize</h4>
+				<div class="stage">
+				</div>
+				<ul class="list fragment">
+					<li class="slot slot-1">
+						<span class="elem elem1 state-1-out"></span>
+						<span class="elem elem2 state-1-out state-3"></span>
+						<span class="note">0 - 10</span>
+						<span class="note note-small">80 - 90</span>
+					</li>
+					<li class="slot slot-2">
+						<span class="elem elem3 state-1-out"></span>
+						<span class="elem elem4 state-1-out state-3"></span>
+						<span class="note">10 - 20</span>
+						<span class="note note-small">90 - 100</span>
+					</li>
+					<li class="slot slot-3">
+						<span class="elem elem5 state-1-out"></span>
+						<span class="elem elem6 state-1-out state-3"></span>
+						<span class="note">20 - 30</span>
+						<span class="note note-small">100 - 110</span>
+					</li>
+					<li class="slot slot-4">
+						<span class="elem elem7 state-1-out"></span>
+						<span class="elem elem9 state-1-out state-3"></span>
+						<span class="note">30 - 40</span>
+						<span class="note note-small">110 - 120</span>
+					</li>
+					<li class="slot slot-5">
+						<span class="elem elem10 state-1-out"></span>
+						<span class="elem elem8 state-1-out state-3"></span>
+						<span class="note">40 - 50</span>
+						<span class="note note-small">120 - 130</span>
+					</li>
+					<li class="slot slot-6">
+						<span class="elem elem11 state-1-out"></span>
+						<span class="elem elem16 state-1-out state-3"></span>
+						<span class="note">50 - 60</span>
+						<span class="note note-small">130 - 140</span>
+					</li>
+					<li class="slot slot-7">
+						<span class="elem elem13 state-1-out"></span>
+						<span class="elem elem15 state-1-out state-3"></span>
+						<span class="note">60 - 70</span>
+						<span class="note note-small">140 - 150</span>
+					</li>
+					<li class="slot slot-8">
+						<span class="elem elem12 state-1-out"></span>
+						<span class="elem elem14 state-1-out state-3"></span>
+						<span class="note">70 - 80</span>
+						<span class="note note-small">150 - 160</span>
+					</li>
+				</ul>
+				<ul class="list list-large fragment push-bottom">
+					<li class="slot slot-1">
+						<span class="elem invisible elem1 state-1 state-2-out"></span>
+						<span class="note note-small">0 - 10</span>
+						<span class="note note-small">160 - 170</span>
+					</li>
+					<li class="slot slot-2">
+						<span class="elem invisible elem2 state-1 state-2-out"></span>
+						<span class="note note-small">10 - 20</span>
+						<span class="note note-small">170 - 180</span>
+					</li>
+					<li class="slot slot-3">
+						<span class="elem invisible elem3 state-1 state-2-out"></span>
+						<span class="note note-small">20 - 30</span>
+						<span class="note note-small">180 - 190</span>
+					</li>
+					<li class="slot slot-4">
+						<span class="elem invisible elem4 state-1 state-2-out"></span>
+						<span class="note note-small">30 - 40</span>
+						<span class="note note-small">190 - 200</span>
+					</li>
+					<li class="slot slot-5">
+						<span class="elem invisible elem5 state-1 state-2-out"></span>
+						<span class="note note-small">40 - 50</span>
+						<span class="note note-small">200 - 210</span>
+					</li>
+					<li class="slot slot-6">
+						<span class="elem invisible elem6 state-1 state-2-out"></span>
+						<span class="note note-small">50 - 60</span>
+						<span class="note note-small">210 - 220</span>
+					</li>
+					<li class="slot slot-7">
+						<span class="elem invisible elem7 state-1 state-2-out"></span>
+						<span class="note note-small">60 - 70</span>
+						<span class="note note-small">220 - 230</span>
+					</li>
+					<li class="slot slot-8">
+						<span class="elem invisible elem9 state-1 state-2-out"></span>
+						<span class="note note-small">70 - 80</span>
+						<span class="note note-small">230 - 240</span>
+					</li>
+					<li class="slot slot-9">
+						<span class="elem invisible elem10 state-1 state-3-out"></span>
+						<span class="note note-small">80 - 90</span>
+						<span class="note note-small">240 - 250</span>
+					</li>
+					<li class="slot slot-10">
+						<span class="elem invisible elem8 state-1 state-3-out"></span>
+						<span class="note note-small">90 - 100</span>
+						<span class="note note-small">250 - 260</span>
+					</li>
+					<li class="slot slot-11">
+						<span class="elem invisible elem11 state-1 state-3-out"></span>
+						<span class="note note-small">100 - 110</span>
+						<span class="note note-small">260 - 270</span>
+					</li>
+					<li class="slot slot-12">
+						<span class="elem invisible elem16 state-1 state-3-out"></span>
+						<span class="note note-small">110 - 120</span>
+						<span class="note note-small">270 - 280</span>
+					</li>
+					<li class="slot slot-13">
+						<span class="elem invisible elem12 state-1 state-3-out"></span>
+						<span class="note note-small">120 - 130</span>
+						<span class="note note-small">280 - 290</span>
+					</li>
+					<li class="slot slot-14">
+						<span class="elem invisible elem15 state-1 state-3-out"></span>
+						<span class="note note-small">130 - 140</span>
+						<span class="note note-small">290 - 300</span>
+					</li>
+					<li class="slot slot-15">
+						<span class="elem invisible elem13 state-1 state-3-out"></span>
+						<span class="note note-small">140 - 150</span>
+						<span class="note note-small">300 - 310</span>
+					</li>
+					<li class="slot slot-16">
+						<span class="elem invisible elem14 state-1 state-3-out"></span>
+						<span class="note note-small">150 - 160</span>
+						<span class="note note-small">310 - 320</span>
+					</li>
+				</ul>
+
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<div class="trigger fragment" data-state="3"></div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+			</section>
+
+
+
+
+
+
+			<section>
+				<h3>Calendar Queue</h3>
+				<h4>Redistribute</h4>
+				<div class="stage">
+						<span class="elem elem1 invisible state-1 state-2-out">16</span>
+						<span class="elem elem3 invisible state-1 state-2-out">17</span>
+						<span class="elem elem5 invisible state-1 state-2-out">18</span>
+						<span class="elem elem7 invisible state-1 state-2-out">19</span>
+				</div>
+				<ul class="list list-high fragment">
+					<li class="slot slot-1">
+						<span class="elem elem1 invisible state-2">16</span>
+						<span class="note note-1 state-2-out">0 - 8</span>
+						<span class="note note-2 note-small state-2-out">64 - 72</span>
+						<span class="note note-1 note-small invisible state-2">0 - 1</span>
+						<span class="note note-2 note-small invisible state-2">8 - 9</span>
+						<span class="note note-3 invisible state-2">16 - 17</span>
+					</li>
+					<li class="slot slot-2">
+						<span class="elem invisible elem3 state-2">17</span>
+						<span class="note note-1 state-2-out">8 - 16</span>
+						<span class="note note-2 note-small state-2-out">72 - 80</span>
+						<span class="note note-1 note-small invisible state-2">1 - 2</span>
+						<span class="note note-2 note-small invisible state-2">9 - 10</span>
+						<span class="note note-3 invisible state-2">17 - 18</span>
+					</li>
+					<li class="slot slot-3">
+						<span class="elem elem1 state-1-out state-2-out">16</span>
+						<span class="elem elem3 state-1-out state-2-out">17</span>
+						<span class="elem elem5 state-1-out state-2">18</span>
+						<span class="elem elem7 state-1-out state-2-out">19</span>
+						<span class="elem elem10 state-2-out">20</span>
+						<span class="elem elem11 state-2-out">21</span>
+						<span class="elem elem13 state-2-out">22</span>
+						<span class="elem elem12 state-2-out">23</span>
+						<span class="note note-1 state-2-out">16 - 24</span>
+						<span class="note note-2 note-small state-2-out">80 - 88</span>
+						<span class="note note-1 note-small invisible state-2">2 - 3</span>
+						<span class="note note-2 note-small invisible state-2">10 - 11</span>
+						<span class="note note-3 invisible state-2">18 - 19</span>
+					</li>
+					<li class="slot slot-4">
+						<span class="elem invisible elem7 state-2">19</span>
+						<span class="note note-1 state-2-out">24 - 32</span>
+						<span class="note note-2 note-small state-2-out">88 - 96</span>
+						<span class="note note-1 note-small invisible state-2">3 - 4</span>
+						<span class="note note-2 note-small invisible state-2">11 - 12</span>
+						<span class="note note-3 invisible state-2">19 - 20</span>
+					</li>
+					<li class="slot slot-5">
+						<span class="elem invisible elem10 state-2">20</span>
+						<span class="note note-1 state-2-out">32 - 40</span>
+						<span class="note note-2 note-small state-2-out">104 - 112</span>
+						<span class="note note-1 note-small invisible state-2">4 - 5</span>
+						<span class="note note-2 note-small invisible state-2">12 - 13</span>
+						<span class="note note-3 invisible state-2">20 - 21</span>
+					</li>
+					<li class="slot slot-6">
+						<span class="elem invisible elem11 state-2">21</span>
+						<span class="note note-1 state-2-out">40 - 48</span>
+						<span class="note note-2 note-small state-2-out">112 - 120</span>
+						<span class="note note-1 note-small invisible state-2">5 - 6</span>
+						<span class="note note-2 note-small invisible state-2">13 - 14</span>
+						<span class="note note-3 invisible state-2">21 - 22</span>
+					</li>
+					<li class="slot slot-7">
+						<span class="elem invisible elem13 state-2">22</span>
+						<span class="note note-1 state-2-out">48 - 56</span>
+						<span class="note note-2 note-small state-2-out">120 - 128</span>
+						<span class="note note-1 note-small invisible state-2">6 - 7</span>
+						<span class="note note-2 note-small invisible state-2">14 - 15</span>
+						<span class="note note-3 invisible state-2">22 - 23</span>
+					</li>
+					<li class="slot slot-8">
+						<span class="elem invisible elem12 state-2">23</span>
+						<span class="note note-1 state-2-out">56 - 64</span>
+						<span class="note note-2 note-small state-2-out">128 - 136</span>
+						<span class="note note-1 note-small invisible state-2">7 - 8</span>
+						<span class="note note-2 note-small invisible state-2">15 - 16</span>
+						<span class="note note-3 invisible state-2">23 - 24</span>
+					</li>
+				</ul>
+
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Immer beim Resize ausgeführt</li>
+					</ul>
+				</aside>
+			</section>
+
+
+			<section>
+				<h3>Calendar Queue</h3>
+				<h4>Komplexität</h4>
+				<table>
+					<tr>
+						<th></th>
+						<th>Min-Heap</th>
+						<th>Parallel Heap</th>
+						<th>Calendar Queue</th>
+						<th>MList</th>
+					</tr>
+					<tr>
+						<td>Theoretisch Enqueue</td>
+						<td>$O(log n)$</td>
+						<td>$O(log n)$</td>
+						<td class="invisible state-1">$O(1)$</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Theoretisch Dequeue</td>
+						<td>$ϴ(log n)$</td>
+						<td>$ϴ(log n)$</td>
+						<td class="invisible state-1">$O(1)$</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Amortisiert Enqueue</td>
+						<td>$O(log n)$</td>
+						<td>$O(log n)$</td>
+						<td class="invisible state-2">$O(1)*$</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Amortisiert Dequeue</td>
+						<td>$ϴ(log n)$</td>
+						<td>$ϴ(log n)$</td>
+						<td class="invisible state-2">$O(1)*$</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>initial $O(n)$</td>
+						<td>nebenläufig</td>
+						<td class="invisible state-2" style="font-size: 0.8em;">* abhängig von<br />Verteilung</td>
+						<td></td>
+					</tr>
+				</table>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Erweiterungen, siehe Positionspapier</li>
+					</ul>
+				</aside>
+
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+			</section>
+
+			<section>
+				<h3>Mlist</h3>
+				<h4></h4>
+				<ol class="floatleft">
+					<li class="fragment">Multi-Tier Linked List</li>
+					<li class="fragment">2003 von Li &amp; Thng entwickelt</li>
+					<li class="fragment">Mehrstufige Struktur</li>
+					<li class="fragment">Ziel: Möglichst geringer Sortieraufwand</li>
+				</ol>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+			</section>
+
+
+
+			<section class="mlist">
+				<h3>MList</h3>
+				<h4>Struktur</h4>
+				<div class="mlists">
+					<div class="stage">
+						
+					</div>
+					<ul class="mlist-t1 list list-large fragment">
+						<li class="empty-elem slot-1">
+						</li>
+						<li class="empty-elem slot-2">
+						</li>
+						<li class="empty-elem slot-3">
+						</li>
+						<li class="empty-elem slot-4">
+						</li>
+						<li class="empty-elem slot-5">
+						</li>
+						<li class="empty-elem slot-6">
+						</li>
+						<li class="empty-elem slot-7">
+						</li>
+						<li class="empty-elem slot-8">
+						</li>
+					</ul>
+					<ul class="mlist-t2 list list-med fragment">
+						<li class="slot slot-1">
+						</li>
+						<li class="slot slot-2">
+						</li>
+						<li class="slot slot-3">
+						</li>
+						<li class="slot slot-4">
+						</li>
+						<li class="slot slot-5">
+						</li>
+						<li class="slot slot-6">
+						</li>
+						<li class="slot slot-7">
+						</li>
+						<li class="slot slot-8">
+						</li>
+					</ul>
+					<ul class="mlist-t3 list list-large fragment">
+						<li class="empty-elem slot-1">
+						</li>
+						<li class="empty-elem slot-2">
+						</li>
+						<li class="empty-elem slot-3">
+						</li>
+						<li class="empty-elem slot-4">
+						</li>
+						<li class="empty-elem slot-5">
+						</li>
+						<li class="empty-elem slot-6">
+						</li>
+						<li class="empty-elem slot-7">
+						</li>
+						<li class="empty-elem slot-8">
+						</li>
+					</ul>
+				</div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>T2 Buckets monoton steigend</li>
+						<li>Innerhalb buckets unsortiert</li>
+					</ul>
+				</aside>
+			</section>
+
+
+
+			<section class="mlist">
+				<h3>MList</h3>
+				<h4>Dequeue</h4>
+				<div class="mlists">
+					<ul class="invisible state-2 mlist-t1 list list-large">
+						<li class="empty-elem slot-1">
+							<span class="state-2 state-3-out elem elem6">12</span>
+							<span class="invisible state-3 state-4-out elem elem7">17</span>
+							<span class="invisible state-6 state-7-out elem elem8">42</span>
+							<span class="invisible state-7 elem elem3">48</span>
+						</li>
+						<li class="empty-elem slot-2">
+							<span class="state-2 state-3-out elem elem7">17</span>
+							<span class="invisible state-6 state-7-out elem elem3">48</span>
+						</li>
+						<li class="empty-elem slot-3">
+						</li>
+						<li class="empty-elem slot-4">
+						</li>
+						<li class="empty-elem slot-5">
+						</li>
+						<li class="empty-elem slot-6">
+						</li>
+						<li class="empty-elem slot-7">
+						</li>
+						<li class="empty-elem slot-8">
+						</li>
+					</ul>
+					<ul class="invisible state-1 mlist-t2 list list-med">
+						<li class="slot slot-1">
+							<span class="state-2-out elem elem6">12</span>
+							<span class="state-2-out elem elem7">17</span>
+						</li>
+						<li class="slot slot-2">
+							<span class="state-5-out elem elem1">23</span>
+						</li>
+						<li class="slot slot-3">
+						</li>
+						<li class="slot slot-4">
+							<span class="state-6-out elem elem3">48</span>
+							<span class="state-6-out elem elem8">42</span>
+						</li>
+						<li class="slot slot-5">
+							<span class="elem elem5">55</span>
+						</li>
+						<li class="slot slot-6">
+						</li>
+						<li class="slot slot-7">
+							<span class="elem elem4">71</span>
+						</li>
+						<li class="slot slot-8">
+							<span class="elem elem2">84</span>
+						</li>
+					</ul>
+					<ul class="mlist-t3 list list-large">
+						<li class="empty-elem slot-1">
+							<span class="state-1-out elem elem1">23</span>
+						</li>
+						<li class="empty-elem slot-2">
+							<span class="state-1-out elem elem2">84</span>
+						</li>
+						<li class="empty-elem slot-3">
+							<span class="state-1-out elem elem3">48</span>
+						</li>
+						<li class="empty-elem slot-4">
+							<span class="state-1-out elem elem4">71</span>
+						</li>
+						<li class="empty-elem slot-5">
+							<span class="state-1-out elem elem5">55</span>
+						</li>
+						<li class="empty-elem slot-6">
+							<span class="state-1-out elem elem6">12</span>
+						</li>
+						<li class="empty-elem slot-7">
+							<span class="state-1-out elem elem7">17</span>
+						</li>
+						<li class="empty-elem slot-8">
+							<span class="state-1-out elem elem8">42</span>
+						</li>
+					</ul>
+				</div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Didaktik</li>
+						<li>Erstes Dequeue, nur T3 gefüllt</li>
+						<li>Anzahl Buckets und bw errechnet</li>
+						<li>48, 42 unsortiert</li>
+						<li>48 top. fragen?</li>
+					</ul>
+				</aside>
+
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<div class="trigger fragment" data-state="3"></div>
+				<div class="trigger fragment" data-state="4"></div>
+				<div class="trigger fragment" data-state="5"></div>
+				<div class="trigger fragment" data-state="6"></div>
+				<div class="trigger fragment" data-state="7"></div>
+			</section>
+
+
+			<section class="mlist">
+				<h3>MList</h3>
+				<h4>Enqueue</h4>
+				<div class="stage">
+					<span class="invisible state-1 state-2-out elem elem9">103</span>
+					<span class="invisible state-3 state-4-out elem elem10">62</span>
+					<span class="invisible state-5 state-6-out elem elem10">15</span>
+				</div>
+				<div class="mlists">
+					<ul class="mlist-t1 list list-large">
+						<li class="empty-elem slot-1">
+							<span class="elem elem6">12</span>
+						</li>
+						<li class="empty-elem slot-2">
+							<span class="invisible state-6 elem elem10">15</span>
+							<span class="state-6-out elem elem7">17</span>
+						</li>
+						<li class="empty-elem slot-3">
+							<span class="invisible state-6 elem elem7">17</span>
+						</li>
+						<li class="empty-elem slot-4">
+						</li>
+						<li class="empty-elem slot-5">
+						</li>
+						<li class="empty-elem slot-6">
+						</li>
+						<li class="empty-elem slot-7">
+						</li>
+						<li class="empty-elem slot-8">
+						</li>
+					</ul>
+					<ul class="mlist-t2 list list-med">
+						<li class="slot slot-1">
+						</li>
+						<li class="slot slot-2">
+							<span class="elem elem1">23</span>
+						</li>
+						<li class="slot slot-3">
+						</li>
+						<li class="slot slot-4">
+							<span class="elem elem3">48</span>
+							<span class="elem elem8">42</span>
+						</li>
+						<li class="slot slot-5">
+							<span class="elem elem5">55</span>
+						</li>
+						<li class="slot slot-6">
+							<span class="invisible state-4 elem elem10">62</span>
+						</li>
+						<li class="slot slot-7">
+							<span class="elem elem4">71</span>
+						</li>
+						<li class="slot slot-8">
+							<span class="elem elem2">84</span>
+						</li>
+					</ul>
+					<ul class="mlist-t3 list list-large">
+						<li class="empty-elem slot-1">
+							<span class="invisible state-2 elem elem9">103</span>
+						</li>
+						<li class="empty-elem slot-2">
+						</li>
+						<li class="empty-elem slot-3">
+						</li>
+						<li class="empty-elem slot-4">
+						</li>
+						<li class="empty-elem slot-5">
+						</li>
+						<li class="empty-elem slot-6">
+						</li>
+						<li class="empty-elem slot-7">
+						</li>
+						<li class="empty-elem slot-8">
+						</li>
+					</ul>
+				</div>
+				<aside class="notes">
+					<ul>
+						<li>103, 62, 15</li>
+					</ul>
+				</aside>
+
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<div class="trigger fragment" data-state="3"></div>
+				<div class="trigger fragment" data-state="4"></div>
+				<div class="trigger fragment" data-state="5"></div>
+				<div class="trigger fragment" data-state="6"></div>
+			</section>
+
+
+			<section>
+				<h3>MList</h3>
+				<h4>Komplexität</h4>
+				<table>
+					<tr>
+						<th></th>
+						<th>Min-Heap</th>
+						<th>Parallel Heap</th>
+						<th>Calendar Queue</th>
+						<th>MList</th>
+					</tr>
+					<tr>
+						<td>Theoretisch Enqueue</td>
+						<td>$O(log n)$</td>
+						<td>$O(log n)$</td>
+						<td>$O(1)$</td>
+						<td class="invisible state-1">$O(n_1) / O(1)$ </td>
+					</tr>
+					<tr>
+						<td>Theoretisch Dequeue</td>
+						<td>$ϴ(log n)$</td>
+						<td>$ϴ(log n)$</td>
+						<td>$O(1)$</td>
+						<td class="invisible state-1">$O(n log n) / O(1)$</td>
+					</tr>
+					<tr>
+						<td>Amortisiert Enqueue</td>
+						<td>$O(log n)$</td>
+						<td>$O(log n)$</td>
+						<td>$O(1)*$</td>
+						<td class="invisible state-1">$O(n_1) / O(1)$</td>
+					</tr>
+					<tr>
+						<td>Amortisiert Dequeue</td>
+						<td>$ϴ(log n)$</td>
+						<td>$ϴ(log n)$</td>
+						<td>$O(1)*$</td>
+						<td class="invisible state-1">$O(1)$</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>initial $O(n)$</td>
+						<td>nebenläufig</td>
+						<td style="font-size: 0.5em;">* abhängig von Verteilung</td>
+						<td></td>
+					</tr>
+				</table>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>n log n beispielhaft Sortieralgorithmus</li>
+						<li>T1 <=> T2 T3</li>
+					</ul>
+					
+				</aside>
+
+				<div class="trigger fragment" data-state="1"></div>
+			</section>
+
+
+			<section>
+				<h3>Fazit</h3>
+				<h4>And the winner is...</h4>
+
+				<div class="winner">
+					<div>
+						<div class="invisible state-2 position">
+							Calendar<br />Queue
+						</div>
+						<div class="podest">
+						</div>
+					</div>
+					<div>
+						<div class="invisible state-3 position">
+							MList
+						</div>
+						<div class="podest">
+						</div>
+					</div>
+					<div>
+						<div class="invisible state-1 position">
+							Heap
+						</div>
+						<div class="podest">
+						</div>
+					</div>
+				</div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<div class="trigger fragment" data-state="1"></div>
+				<div class="trigger fragment" data-state="2"></div>
+				<div class="trigger fragment" data-state="3"></div>
+
+			</section>
+
+
+			<section>
+				<h3>Diskussion</h3>
+				<h4></h4>
+				<div class="stage">
+					Schätzfrage:<br />
+					Wie groß ist der Anteil der Verwaltung der Datenstrukturen in einer<br />Diskreten Eventbasierten Simulation?
+				</div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span><span></span>
+				</footer>
+				<aside class="notes">
+					<ul>
+						<li>Am Anfang: großer Anteil</li>
+					</ul>
+				</aside>
+			</section>
+
+			<section>
+				<div class="stage">
+					Vielen Dank für die Aufmerksamkeit!
+				</div>
+				<footer>
+					<span></span><span>Alternativen zu Priority Queues</span>
+				</footer>
+			</section>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js"></script>
+	<script type="text/javascript" src="js/jq.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/reveal.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/presentation.js" charset="utf-8"></script>
+</body>
+</html>

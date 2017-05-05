@@ -1,0 +1,31 @@
+Calendar queues: a fast 0(1) priority queue implementation for the simulation event set problem
+http://dl.acm.org/citation.cfm?id=63045
+
+Study of Optimised bucket widths in Calendar Queue for Discrete Event Simulator
+https://www.researchgate.net/profile/C_Aswakul/publication/239549805_Study_of_Optimised_bucket_widths_in_Calendar_Queue_for_Discrete_Event_Simulator/links/02e7e52f3aebd34725000000.pdf
+
+A comparative study of parallel and sequential priority queue algorithms
+http://dl.acm.org/citation.cfm?id=249205
+
+Dynamic calendar queue
+http://ieeexplore.ieee.org/document/766449/
+
+SNOOPy Calendar Queue
+http://dl.acm.org/citation.cfm?id=510453
+
+Implementing fair queueing in ATM switches. II. The logarithmic calendar queue
+http://ieeexplore.ieee.org/document/632599/
+
+A Comparative Study of Parallel and Sequential Priority Queue Algorithms
+http://dl.acm.org/citation.cfm?doid=249204.249205
+
+Ladder queue: An O(1) priority queue structure for large-scale discrete event simulation
+http://dl.acm.org/citation.cfm?id=1103324
+
+AU EIWRICAL COIUPARISON OF
+PRIORITY-QUEUE AUD EVEUFSET
+lMPLElWEUTd?lONS 
+http://delivery.acm.org/10.1145/10000/5686/p300-jones.pdf?ip=195.37.234.246&id=5686&acc=ACTIVE%20SERVICE&key=2BA2C432AB83DA15.48A293025ED356A6.4D4702B0C3E38B35.4D4702B0C3E38B35&CFID=855088669&CFTOKEN=15101075&__acm__=1478089035_282ff8b5c9f5be967eb277659a486c16
+
+Parallel heap gedöns
+http://link.springer.com/article/10.1007/BF00128644

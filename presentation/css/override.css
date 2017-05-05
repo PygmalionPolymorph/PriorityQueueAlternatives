@@ -1,0 +1,482 @@
+* {
+	box-sizing: border-box;
+}
+
+.reveal {
+	font-size: 2rem;
+}
+
+.slides-small {
+	font-size: 1.3rem !important;
+}
+
+.slides-smallest {
+	font-size: .6rem !important;
+}
+
+.reveal .slides-small .elem, .reveal .slides-smallest .elem {
+	font-size: 1em;
+	line-height: 2em;
+	width: 2em;
+	height: 2em;
+}
+
+.reveal ul {
+	margin: 0;
+	list-style-type: none !important;
+}
+
+.reveal ul ul {
+	margin: 0;
+}
+
+.floatleft {
+	float: left;
+	clear: both;
+}
+
+.floatright {
+	float: right;
+}
+
+.reveal ol {
+	list-style-type: disc;
+}
+
+.reveal h3 {
+	height: 1em; 
+	text-align: left;
+	display: inline-block;
+	width: 70%;
+}
+
+.reveal h4 {
+	height: 1em;
+	text-align: right;
+	display: inline-block;
+	width: 29%;
+}
+
+.reveal .agenda {
+	width: 50%;
+	line-height: 1.8em;
+	list-style-type: upper-roman;
+}
+
+.textleft {
+	text-align: left !important;
+}
+
+.reveal footer {
+	width: 100%;
+	position: absolute;
+	bottom: 1em;
+	font-size: .6em;
+	display: flex;
+	justify-content: space-between;
+}
+
+.reveal section.present {
+	height: 100%;
+}
+
+.frag {
+	transition: transform .5s ease-in, opacity .2s ease !important;
+	display: block !important;
+}
+
+.reveal .list {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+}
+
+.reveal .list .slot {
+	flex-flow: row wrap;
+	width: 3.7em;
+	height: 3.7em;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid #333;
+}
+
+.reveal .slides-small .list .slot, .reveal .slides-smallest .list .slot {
+	width: 6em;
+	height: 6em;
+}
+
+.push-bottom {
+	position: relative;
+	top: 3em;
+}
+
+.reveal .list-large .slot {
+	width: 2em;
+	height: 2em;
+}
+
+.reveal .list-med .slot {
+	width: 3em;
+	height: 3em;
+}
+
+.reveal .list-high .slot {
+	height: 6em;
+}
+
+.reveal .slides-small .list-high .slot, .reveal .slides-smallest .list-hight .slot {
+	height: 8em;
+}
+
+
+.reveal .list .slot .note {
+	position: absolute;
+	font-size: .8em;
+	bottom: -1.5em;
+	transition: opacity .2s ease;
+}
+
+.reveal .list .note-small {
+	font-size: .6em !important;
+}
+
+.reveal .list .note:nth-last-child(1) {
+	bottom: -3em;
+}
+
+.reveal .list .note:nth-last-child(2) {
+	bottom: -1.5em;
+}
+
+.reveal .list .note:nth-last-child(3) {
+	bottom: -3em;
+}
+
+.reveal .list .note-1 {
+	bottom: -1.5em !important;
+}
+.reveal .list .note-2 {
+	bottom: -3em !important;
+}
+.reveal .list .note-3 {
+	bottom: -4.5em !important;
+}
+.reveal .elem.invisible {
+	position: absolute;
+}
+
+.reveal .invisible {
+	opacity: 0;
+	animation: fade-out .3s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	},
+	99% {
+		opacity: 0;
+	},
+	100% {
+		left: -99999px;
+	}
+}
+
+.reveal .heap {
+	position: relative;
+	width: 100%;
+}
+
+.reveal .heap .root {
+	position: absolute;
+	left: calc(50% - 3em);
+}
+
+.reveal .heap .level1 {
+	position: absolute;
+	top: 4em;
+}
+
+.reveal .heap .level2 {
+	position: absolute;
+	top: 8em;
+}
+
+.reveal .heap li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: row wrap;
+	border: 2px solid #333;
+	width: 3em;
+	height: 3em;
+}
+
+.reveal .slides-smallest .heap li {
+	width: 5em;
+	height: 5em;
+}
+
+
+.reveal .parallel-heap > li {
+	width: 7.5em;
+}
+.reveal .parallel-heap {
+	left: -3%;
+}
+
+.reveal .ph-array {
+	display: flex;
+	flex-flow: row nowrap;
+	position: relative;
+	width: 100%;
+}
+
+.reveal .ph-array li {
+	height: 2.5em;
+	width: 33%;
+	border: 1px solid #333;
+}
+
+
+.reveal .heap .level1.slot1 {
+	left: calc(25% - 3em);
+}
+.reveal .heap .level1.slot1:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: -60%;
+	left: 70%;
+	background-color: #333;
+	height: 0.1em;
+	width: 7em;
+	transform: rotate(-20deg);
+}
+.reveal .slides-small .heap .level1.slot:after,
+.reveal .slides-smallest .heap .level1.slot:after {
+	/*width: 6em;*/
+}
+.reveal .parallel-heap .level1.slot1:after {
+	top: -30%;
+	left: 70%;
+	width: 3em;
+}
+.reveal .heap .level1.slot2 {
+	left: calc(75% - 3em);
+}
+.reveal .heap .level1.slot2:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: -60%;
+	right: 70%;
+	background-color: #333;
+	height: 0.1em;
+	width: 7em;
+	transform: rotate(20deg);
+}
+.reveal .parallel-heap .level1.slot2:after {
+	top: -30%;
+	right: 70%;
+	width: 3em;
+}
+.reveal .heap .level2.slot1 {
+	left: calc(12.5% - 3em);
+}
+.reveal .heap .level2.slot1:after, .reveal .heap .level2.slot3:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: -40%;
+	left: 40%;
+	background-color: #333;
+	height: 0.1em;
+	width: 3.5em;
+	transform: rotate(-30deg);
+}
+.reveal .heap .level2.slot2 {
+	left: calc(37.5% - 3em);
+}
+.reveal .heap .level2.slot2:after, .reveal .heap .level2.slot4:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: -40%;
+	right: 40%;
+	background-color: #333;
+	height: 0.1em;
+	width: 3.5em;
+	transform: rotate(30deg);
+}
+.reveal .heap .level2.slot3 {
+	left: calc(62.5% - 3em);
+}
+.reveal .heap .level2.slot4 {
+	left: calc(87.5% - 3em);
+}
+.reveal .parallel-heap .level2.slot1:after,
+.reveal .parallel-heap .level2.slot2:after,
+.reveal .parallel-heap .level2.slot3:after,
+.reveal .parallel-heap .level2.slot4:after {
+	top: -20%;
+	width: 3vw;
+}
+
+.reveal .stage {
+	box-sizing: content-box;
+	min-height: 1.5em;
+	display: block;
+	width: 100%;
+	padding: 1em 0;
+}
+
+.reveal .stage-bottom {
+	display: block;
+	width: 100%;
+	padding: 1em 0;
+	margin-top: 3em;
+}
+
+.reveal .elem:not(.invisible) {
+	display: inline-block;
+}
+
+.reveal .elem {
+	transition: all .2s ease;
+	color: #000;
+	text-shadow: 0 0 3px #333;
+	font-size: .5em;
+	line-height: 2.5em;
+	width: 2.5em;
+	height: 2.5em;
+	border-radius: 50%;
+	text-align: center;
+}
+
+.elem1, .elem9 {background-color: rgb(255, 150, 150);}
+.elem2, .elem10 {background-color: rgb(150, 255, 255);}
+.elem3, .elem11 {background-color: rgb(150, 150, 255);}
+.elem4, .elem12 {background-color: rgb(255, 255, 150);}
+.elem5, .elem13 {background-color: rgb(255, 150, 255);}
+.elem6, .elem14 {background-color: rgb(150, 255, 255);}
+.elem7, .elem15 {background-color: rgb(200, 200, 200);}
+.elem8, .elem16 {background-color: rgb(255, 200, 200);}
+
+.reveal table {
+	font-size: 0.8em;
+}
+
+.reveal table td, .reveal table th {
+	vertical-align: middle;
+	text-align: center;
+	padding: 0.6em;
+}
+
+.reveal .mlists {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	width: 80%;
+	position: relative;
+	left: 10%;
+	align-items: center;
+}
+.reveal .mlist .mlist-t1, .reveal .mlist .mlist-t3 {
+	flex-flow: column nowrap;
+}
+
+.reveal .mlist .mlist-t2 {
+}
+
+.reveal .mlist .mlist-t3 {
+	align-items: flex-end;
+}
+
+.reveal .empty-elem {
+	font-size: .5em;
+	border-radius: 50%;
+	border: 2px dashed #333;
+	width: 2.5em;
+	height: 2.5em;
+	position: relative;
+}
+
+.reveal .empty-elem + .empty-elem {
+	margin-top: 0.8em;
+}
+
+.reveal .empty-elem:after {
+	content: '';
+	position: absolute;
+	width: 0.2em;
+	height: 0.5em;
+	bottom: -0.8em;
+	background-color: #333;
+	left: calc(50% - 0.2em);
+}
+
+.reveal .empty-elem:last-child:after {
+	display: none;
+}
+
+.reveal .empty-elem .elem {
+	font-size: 1em !important;
+	position: absolute;
+	top: -2px;
+	left: -2px;
+}
+
+.reveal .winner {
+	height: 50vh;
+	width: 50vw;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: flex-end;
+	margin: 11% 0 0 25%;
+}
+
+.reveal .winner .podest {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: rgba(0,0,0,.2);
+}
+
+.reveal .winner > div {
+	position: relative;
+	height: 100%;
+	width: 33%;
+}
+
+.reveal .winner > div:nth-child(1) > .podest {
+	height: 40%;
+}
+.reveal .winner > div:nth-child(1) > .position {
+	margin-top: 4em;
+}
+.reveal .winner > div:nth-child(2) > .podest {
+	height: 60%;
+}
+.reveal .winner > div:nth-child(2) > .position {
+	margin-top: 2em;
+}
+.reveal .winner > div:nth-child(3) > .podest {
+	height: 20%;
+}
+.reveal .winner > div:nth-child(3) > .position {
+	margin-top: 6em;
+}
+
+.reveal .variables {
+	position: absolute;
+	top: 3em;
+}
+.reveal .list-large .note, .reveal .list-large .note-small {
+	font-size: .3em !important;
+}
+

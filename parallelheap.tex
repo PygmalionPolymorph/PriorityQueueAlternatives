@@ -1,0 +1,28 @@
+\section{Parallel Heap}
+Als Alternative zum klassischen Heap gibt es für die parallele Verarbeitung mehrerer Events den \textit{Parallel Heap}.
+Dieser ist im grundsätzlichen Aufbau ein Heap, bei dem die Knoten Arrays der Größe $r$ sind, welche die Elemente halten. Entsprechend befindet sich das Element \textit{i} an der Stelle $(i-( \lceil \frac{i}{r} \rceil -1)*r)$  des Arrays, in Knoten $ \lceil \frac{i}{r} \rceil $.
+\cite{parallelHeap-structure}\cite{prasad_parallel_1995}
+
+\subsection{Dequeue}
+Beim Löschen wird der Wurzelknoten entfernt. Da dies ein Array aus \textit{r} Elementen ist, können \textit{r} Prozessorkerne ausgelastet werden, um mit diesen Daten zu arbeiten.
+Der freigewordene Platz wird mit dem größten Knoten aufgefüllt. Sollte dieser aus weniger als \textit{r} Elementen bestehen, wird dies mit den größten Elementen des zweitgrößten Knotens aufgefüllt. \cite{parallelHeap-structure}\cite{prasad_parallel_1995}
+
+Wie bei gewöhnlichen Heaps auch, muss nun die Heapeigenschaft wiederhergestellt werden. Das Vorgehen ist dem Prinzip nach gleich; mit kleinen Erweiterungen.
+Die Elemente des aktuellen Knotens und seiner beiden Kinder werden zusammengeführt und sortiert. Die kleinsten \textit{r} Elemente bleiben im aktuellen Knoten. \cite{parallelHeap-structure}\cite{prasad_parallel_1995}
+
+Sei \textit{x} die Priorität des größten Elementes im linken Kind und \textit{y} die des Rechten.
+Wenn $x \geq y$ ist, werden die \textit{r} kleinsten Elemente im linken Kind untergebracht, der Rest im rechten Kind. Da die Heapeigenschaft für das linke Kind erfüllt ist, wird nachfolgend nur noch der rechte Teilbaum betrachtet; das rechte Kind wird zum aktuellen Knoten.
+Die genannten Schritte werden wiederholt, bis der aktuelle Knoten ein Blatt ist, oder für diesen die Heapeigenschaft erfüllt ist.
+Falls $x < y$ ist, werden die Rollen von linkem und rechtem Kind vertauscht.  \cite{parallelHeap-structure}\cite{prasad_parallel_1995}
+
+Aufgrund des beschriebenen Mechanismus ist die Verarbeitung mehrerer Elemente parallel, wodurch eine deterministische Abfolge nicht vollständig garantiert ist. Soll der Parallel Heap für \acs{DES} genutzt werden, muss dies an anderer Stelle sichergestellt werden. \cite{PDES}
+
+\subsection{Enqueue}
+Wenn \textit{n} Elemente in den Heap eingefügt werden sollen, werden diese zuerst sortiert und danach durch den \textit{insert-update}-Prozess eingefügt:
+Der Prozess beginnt immer mit dem Wurzelknoten und endet am Zielknoten.
+Zielknoten ist der Letzte, sofern dieser die einzufügenden Elemente aufnehmen kann, sonst ein neuer Knoten, welcher nach dem aktuell Letzten eingefügt wird.
+Wenn im Zielknoten $k < n$ Elemente vorhanden sind, müssen zwei Zyklen des Prozesses durchlaufen werden. In dem ersten werden die $n-k$ kleinsten Elemente einsortiert, im Zweiten der Rest.  \cite{parallelHeap-structure}\cite{prasad_parallel_1995}
+
+Folgende Schritte werden wiederholt, bis der Zielknoten erreicht ist. Im Zielknoten werden schließlich alle Elemente untergebracht werden können.
+Die \textit{n} einzufügenden Elemente werden mit denen des aktuellen Knotens zusammengeführt und sortiert.
+Anschließend werden die \textit{r} kleinsten Elemente im aktuellen Knoten belassen; alle Verbleibenden werden zu dem Kind mitgenommen, welches auf dem Weg zum Zielknoten liegt. \cite{parallelHeap-structure}\cite{prasad_parallel_1995}
